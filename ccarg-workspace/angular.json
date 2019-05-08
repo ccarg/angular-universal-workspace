@@ -1,0 +1,317 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "universal-ui": {
+      "root": "projects/universal-ui/",
+      "sourceRoot": "projects/universal-ui/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/browser",
+            "index": "projects/universal-ui/src/index.html",
+            "main": "projects/universal-ui/src/main.ts",
+            "polyfills": "projects/universal-ui/src/polyfills.ts",
+            "tsConfig": "projects/universal-ui/tsconfig.app.json",
+            "assets": [
+              "projects/universal-ui/src/favicon.ico",
+              "projects/universal-ui/src/assets"
+            ],
+            "styles": [
+              "projects/universal-ui/src/styles.css"
+            ],
+            "scripts": [],
+            "es5BrowserSupport": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/universal-ui/src/environments/environment.ts",
+                  "with": "projects/universal-ui/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "universal-ui:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "universal-ui:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "universal-ui:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/universal-ui/src/test.ts",
+            "polyfills": "projects/universal-ui/src/polyfills.ts",
+            "tsConfig": "projects/universal-ui/tsconfig.spec.json",
+            "karmaConfig": "projects/universal-ui/karma.conf.js",
+            "styles": [
+              "projects/universal-ui/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/universal-ui/src/favicon.ico",
+              "projects/universal-ui/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/universal-ui/tsconfig.app.json",
+              "projects/universal-ui/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/server",
+            "main": "projects/universal-ui/src/main.server.ts",
+            "tsConfig": "projects/universal-ui/tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/universal-ui/src/environments/environment.ts",
+                  "with": "projects/universal-ui/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "universal-ui-e2e": {
+      "root": "projects/universal-ui-e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/universal-ui-e2e/protractor.conf.js",
+            "devServerTarget": "universal-ui:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "universal-ui:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/universal-ui-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "admin-ui": {
+      "root": "projects/admin-ui/",
+      "sourceRoot": "projects/admin-ui/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/admin-ui",
+            "index": "projects/admin-ui/src/index.html",
+            "main": "projects/admin-ui/src/main.ts",
+            "polyfills": "projects/admin-ui/src/polyfills.ts",
+            "tsConfig": "projects/admin-ui/tsconfig.app.json",
+            "assets": [
+              "projects/admin-ui/src/favicon.ico",
+              "projects/admin-ui/src/assets"
+            ],
+            "styles": [
+              "projects/admin-ui/src/styles.css"
+            ],
+            "scripts": [],
+            "es5BrowserSupport": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/admin-ui/src/environments/environment.ts",
+                  "with": "projects/admin-ui/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "admin-ui:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "admin-ui:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "admin-ui:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/admin-ui/src/test.ts",
+            "polyfills": "projects/admin-ui/src/polyfills.ts",
+            "tsConfig": "projects/admin-ui/tsconfig.spec.json",
+            "karmaConfig": "projects/admin-ui/karma.conf.js",
+            "styles": [
+              "projects/admin-ui/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/admin-ui/src/favicon.ico",
+              "projects/admin-ui/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/admin-ui/tsconfig.app.json",
+              "projects/admin-ui/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "admin-ui-e2e": {
+      "root": "projects/admin-ui-e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/admin-ui-e2e/protractor.conf.js",
+            "devServerTarget": "admin-ui:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "admin-ui:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/admin-ui-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "utils-lib": {
+      "root": "projects/utils-lib",
+      "sourceRoot": "projects/utils-lib/src",
+      "projectType": "library",
+      "prefix": "ccarg",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/utils-lib/tsconfig.lib.json",
+            "project": "projects/utils-lib/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/utils-lib/src/test.ts",
+            "tsConfig": "projects/utils-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/utils-lib/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/utils-lib/tsconfig.lib.json",
+              "projects/utils-lib/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "universal-ui"
+}
