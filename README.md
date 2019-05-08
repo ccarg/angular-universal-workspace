@@ -6,7 +6,7 @@ create angular workspace with:
 
 1. Create empty workspace
 
-```
+```javascript
 ng new ccarg-workspace --create-application=false
 
 Exclude routing and select stylesheet format:
@@ -14,22 +14,22 @@ Exclude routing and select stylesheet format:
     ? Which stylesheet format would you like to use?  
         > SCSS   
 ```
-        
+
 2. Change directory 
 
-```
+```javascript
 cd ccarg-workspace\
 ```
 
 3. Create app
 
-```
+```javascript
 ng g application universal-ui
 ```
 
 4. Upgrade application as universal
 
-```
+```javascript
 ng add @nguniversal/express-engine --clientProject universal-ui
 ```
 
@@ -37,7 +37,7 @@ ng add @nguniversal/express-engine --clientProject universal-ui
 
 initial:
 
-```
+```javascript
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
@@ -60,7 +60,7 @@ initial:
 
 amended:
 
-```
+```javascript
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
@@ -83,20 +83,20 @@ amended:
 
 6. Build and serve universal application
 
-```
+```javascript
 npm run build:ssr && npm run serve:ssr
 ```
 
 7. Create and test serve second regular application
 
-```
+```javascript
 ng g application admin-ui
 ng serve admin-ui
 ```
 
 8. Create shared library and build it
 
-```
+```javascript
 ng generate library utils-lib --prefix=ccarg
 ```
 
@@ -121,7 +121,7 @@ export class UtilsLibService {
 
 10. Amend tsconfig.server.json
 
-```
+```javascript
 remove 
   "baseUrl": "."
   tsconfig.server.json to avoid exception:
@@ -135,7 +135,7 @@ remove
 
   app.module.ts
 
-```
+```javascript
     import { UtilsLibModule } from 'utils-lib';
     ...
     imports: [
@@ -146,7 +146,7 @@ remove
 
   app.component.ts
 
-```
+```javascript
     import { Component } from '@angular/core';
     import { Observable } from 'rxjs';
     import { UtilsLibService } from 'utils-lib';
@@ -169,7 +169,7 @@ remove
 
   app.component.html
 
-```
+```html
   ...
   <hr>
     {{title$ | async}}
@@ -181,7 +181,7 @@ remove
 
   app.module.ts
 
-```
+```javascript
     import { BrowserModule } from '@angular/platform-browser';
     import { NgModule } from '@angular/core';
     import { UtilsLibModule } from 'utils-lib';
@@ -203,7 +203,7 @@ remove
 
   app.component.ts
 
-```
+```javascript
     import { Component } from '@angular/core';
     import { Observable } from 'rxjs';
     import { UtilsLibService } from 'utils-lib';
@@ -226,7 +226,7 @@ remove
 
   app.component.html
 
-```
+```html
   ...
   <hr>
     {{title$ | async}}
@@ -236,7 +236,7 @@ remove
 
 13. Build library and serve both UIs to test test
 
-```
+```javascript
 ng build utils-lib
 npm run build:ssr && npm run serve:ssr
 ng serve admin-ui
